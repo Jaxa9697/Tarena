@@ -1,0 +1,124 @@
+
+<div class="modal-header">
+  <h4 class="modal-title">
+    <img src="images/icon.png" style="width: 15%; margin-right: 20px;">{{formType}}
+  </h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form id="addingForm" #addForm="ngForm"></form>
+  <table  class="example-full-width" cellspacing="0">
+    <tr>
+      <td style="width: 65%">
+        <md-input-container>
+          <input mdInput required placeholder="Название" type="text" #_name value="{{editedAtc.name}}" form="addingForm">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container>
+          <input type="text" mdInput placeholder="№ пасспорта" #_passport value="{{editedAtc.passport}}" form="addingForm">
+        </md-input-container>
+      </td>
+    </tr>
+  </table>
+  <p>
+    <md-input-container class="example-full-width">
+      <textarea mdInput placeholder="Адресс" #_address value="{{editedAtc.address}}" form="addingForm"></textarea>
+    </md-input-container>
+  </p>
+  <table class="example-full-width">
+    <tr>
+      <td>
+        <md-input-container>
+          <input type="tel" mdInput required placeholder="Телефон" #_telephone value="{{editedAtc.telephone}}" form="addingForm">
+        </md-input-container>
+      </td>
+      <td style="width: 60%">
+        <md-input-container>
+          <input type="tel" mdInput placeholder="Мобильный телефон" #_phone value="{{editedAtc.phone}}" form="addingForm">
+        </md-input-container>
+      </td>
+    </tr>
+  </table>
+  <table class="example-full-width">
+    <tr>
+      <td style="width: 32%;">
+        <md-select placeholder="ATC" required (change)="changingAlcSelect();" #idAtc="ngModel" [(ngModel)]="_idAtc" name="mac">
+          <md-option *ngFor="let idA of atcList" value="{{idA.ID}}">{{idA.name}}</md-option>
+        </md-select>
+      </td>
+      <td  style="width: 15%;">
+        <md-select placeholder="ALC" required #_alc="ngModel" [(ngModel)]="alc" form="addingForm">
+          <md-option *ngFor="let number of alcNumber" value="{{number}}">{{number}}</md-option>
+        </md-select>
+      </td>
+      <td style="width: 23%;">
+        <md-input-container>
+          <input mdInput required placeholder="Порт" type="number" #_port value="{{editedAtc.port}}" form="addingForm">
+        </md-input-container>
+      </td>
+      <td style="width: 30%;">
+        <md-select placeholder="Vlan" required (change)="changingVlanSelect();" #macAddress="ngModel" [(ngModel)]="_vlan" name="mac">
+          <md-option *ngFor="let vlan of vlans" value="{{vlan.ID}}">{{vlan.name}}</md-option>
+        </md-select>
+      </td>
+    </tr>
+  </table>
+  <table class="example-full-width">
+    <tr>
+      <td>
+        <md-input-container>
+          <input mdInput required placeholder="IP-address" type="text" list="free" #_ipAddress value="{{editedAtc.ipAddress}}" form="addingForm">
+          <datalist id="free">
+            <option *ngFor="let freeIp of freeIps" value="{{freeIp}}">
+          </datalist>
+        </md-input-container>
+      </td>
+      <td style="width: 55%;">
+        <md-input-container>
+          <input mdInput placeholder="MAC-address" required type="text" #_macAddress value="{{editedAtc.macAddress}}" form="addingForm">
+        </md-input-container>
+      </td>
+    </tr>
+  </table>
+  <table class="example-full-width">
+    <tr>
+      <td>
+        <md-input-container>
+          <input mdInput required placeholder="Stan" type="number" #_stan value="{{editedAtc.stan}}" form="addingForm">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container>
+          <input mdInput required placeholder="Line" type="number" #_line value="{{editedAtc.line}}" form="addingForm">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container>
+          <input mdInput required placeholder="VPI" type="number" #_vpi value="{{editedAtc.vpi}}" form="addingForm">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container>
+          <input mdInput required placeholder="VCI" type="number" #_vci value="{{editedAtc.vci}}" form="addingForm">
+        </md-input-container>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="modal-footer">
+  <input type="number" hidden value="{{idClient}}" form="addingForm" title="">
+
+  <button (click)="AddNew(_port.value, _name.value, _address.value, _passport.value,
+   _telephone.value, _phone.value, _ipAddress.value, _macAddress.value, _stan.value, _line.value, _vpi.value, _vci.value);" [hidden]="!editForm"  class="btn btn2 btn3">Добавить</button>
+
+  <button (click)="updateAtc(_port.value, _name.value, _address.value, _passport.value,
+   _telephone.value, _phone.value, _ipAddress.value, _macAddress.value, _stan.value, _line.value, _vpi.value, _vci.value);" [hidden]="editForm" class="btn btn2 btn3" form="addingForm">Сохранить измениния</button>
+</div>
+<style>
+  md-select,md-input-container{
+    width: 99%;
+  }
+</style>

@@ -1,0 +1,63 @@
+<div id="listOfJournal">
+  <form id="addComing" ></form>
+  <table id="template_table" class="center">
+    <tr id="table_header">
+      <td class="number-header">№</td>
+      <td>Шлюз</td>
+      <td>Vlan</td>
+      <td>Тариф</td>
+      <td>Маска подсети</td>
+      <td>
+        <div class="settings editor"></div>
+      </td>
+    </tr>
+    <tr *ngIf="user.pVlan.create || user.pVlan.update" style="border-bottom: 1px solid #167F92;">
+        <td class="number"><input type="number" value="{{_id}}" hidden title=""></td>
+        <td>
+          <md-input-container>
+            <input mdInput required type="text" #gateway="ngModel" [(ngModel)]="vlan.gateway" value="{{_gateway}}" form="addComing">
+          </md-input-container>
+        </td>
+        <td>
+          <md-input-container>
+            <input mdInput required type="text" #name="ngModel" [(ngModel)]="vlan.name" value="{{_name}}" form="addComing">
+          </md-input-container>
+        </td>
+        <td>
+          <md-select required #tariff="ngModel" [(ngModel)]="selectedIndex">
+            <md-option *ngFor="let tariff of tariffs;" value="{{tariff.ID}}">{{tariff.name}}</md-option>
+          </md-select>
+        </td>
+        <td>
+          <md-input-container>
+            <input mdInput required type="text" #subnetMask="ngModel" [(ngModel)]="vlan.subnetMask" value="{{_subnetMask}}" form="addComing">
+          </md-input-container>
+        </td>
+        <td>
+          <button *ngIf="user.pVlan.create" (click)="addNewVlan(vlan);" [hidden]="AddButton" class="btn btn3" form="addComing">Добавить</button>
+          <button *ngIf="user.pVlan.update" (click)="updateVlan(gateway.value, name.value, subnetMask.value);" [hidden]="SaveButton" class="btn btn3" form="addComing">Сохранить</button>
+        </td>
+      </tr>
+    <ng-template ngFor let-vlan [ngForOf]="vlans">
+      <tr>
+        <td  class="number" #number>{{vlan.number}}</td>
+        <td #gateway>{{vlan.gateway}}</td>
+        <td #name>{{vlan.name}}</td>
+        <td #tariff>{{vlan.tariff}}</td>
+        <td #subnetMask>{{vlan.subnetMask}}</td>
+        <td class="settingsOfCredits">
+          <div class="ip editor toogle" (click)="showVlansIp(number.innerHTML);" (dblclick)="hideVlansIp();"></div>
+          <div *ngIf="user.pVlan.update" class="change editor toogle" (click)="editVlan(id, gateway, name, tariff, subnetMask);"></div>
+          <div *ngIf="user.pVlan.remove" class="delete editor toogle" (click)="deleteVlan(id.value);"></div>
+          <input type="number" value="{{vlan.id}}" #id hidden title="">
+        </td>
+      </tr>
+        <ng-container #ipContent></ng-container>
+    </ng-template>
+  </table>
+</div>
+<style>
+  md-input-container{
+    width: 60%;
+  }
+</style>

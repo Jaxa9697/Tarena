@@ -1,0 +1,52 @@
+
+<div>
+  <form [style.marginBottom]="'10px'">
+    <md-card>
+      <md-input-container class="example-full-width">
+        <input mdInput type="text" [(ngModel)]="search" autocomplete="new-search" (input)="searchEv()" name="search" list="results" placeholder="Поиск клиентов по имени, номер телефона, ip-address" >
+      </md-input-container>
+        <datalist id="results">
+        <option *ngFor="let result of results" value="{{result.name + ' ' + result.tel + ' ' + result.ip}}">
+      </datalist>
+      <table cellspacing="0">
+        <tr>
+          <td [style.width]="'80%'">
+            <md-input-container [style.width]="'99%'">
+              <textarea mdInput min="10" #Problem [(ngModel)]="problem" name="problem" placeholder="Опишите проблему"></textarea>
+              <md-hint align="end">{{Problem.value.length}} / 10 min</md-hint>
+            </md-input-container>
+          </td>
+          <td [style.width]="'20%'">
+            <button [disabled]="Problem.value.length <= 10" (click)="saveNewProblem();" class="btn btn2">Новая проблема</button>
+          </td>
+        </tr>
+      </table>
+    </md-card>
+  </form>
+  <table *ngIf="unsolvedProblems && user.pReport.read" class="template_table center">
+    <tr class="table_header">
+      <td class="number-header">№</td>
+      <td>Дата создание</td>
+      <td>Пользователь</td>
+      <td>Проблема</td>
+      <td>
+        <div class="settings editor"></div>
+      </td>
+    </tr>
+    <tr *ngFor="let problem of problems">
+      <td class="number">{{problem.number}}</td>
+      <td>{{problem.dateCreate}}</td>
+      <td>{{problem.user}}</td>
+      <td>{{problem.problem}}</td>
+      <td>
+        <label>
+          <md-checkbox [ngModel]="problem.status" (change)="solvedChanging(id.value, status.checked);" #status [color]="primary">Решено</md-checkbox>
+        </label>
+        <div *ngIf="!problem.changed && user.pReport.update" class="save editor toogle"></div>
+        <div *ngIf="problem.changed && user.pReport.update" (click)="saveSolvedProblem(id.value, status.checked);" class="saveRed editor toogle"></div>
+        <input hidden type="number" #id value="{{problem.id}}">
+      </td>
+    </tr>
+  </table>
+</div>
+

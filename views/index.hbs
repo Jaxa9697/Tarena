@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <base href="/">
+    <title>Tarena Application</title>
+  <link rel='stylesheet' href='stylesheets/style.css' >
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="assets/css/form-elements.css">
+
+  <link href="js/vendor/@angular/material/prebuilt-themes/indigo-pink.css" rel="stylesheet">
+  <link rel="icon" href="/images/icon.png" type="image/png">
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />-->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">-->
+    <!--<link rel='stylesheet' href='/stylesheets/style.css'/>-->
+    <!--<link rel="stylesheet" href="bower_components/semantic/dist/semantic.min.css">-->
+    <!-- 1. Load libraries -->
+    <!-- Polyfill(s) for older browsers -->
+    <script src="js/vendor/es6-shim/es6-shim.min.js"></script>
+    <script src="js/vendor/hammerjs/hammer.min.js"></script>
+
+    <script src="js/vendor/zone.js/dist/zone.js"></script>
+    <script src="js/vendor/reflect-metadata/Reflect.js"></script>
+    <script src="js/vendor/systemjs/dist/system.src.js"></script>
+
+    <!-- 2. Configure SystemJS -->
+    <script src="systemjs.config.js"></script>
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/jquery-ui.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.js"></script>
+  <!--<script src="assets/js/jquery.backstretch.js"></script>-->
+</head>
+<body>
+
+<div>
+  <my-app>
+    <!--<img id="loader" class="icon iconTop" src="images/Preloader_4.gif">-->
+    <svg id="loader" class="lds-curve-bars" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><g transform="translate(50,50)"><circle cx="0" cy="0" r="8.333333333333334" fill="none" stroke="#337ab7" stroke-width="3" stroke-dasharray="26.179938779914945 26.179938779914945" transform="rotate(28.2775)">
+      <animateTransform attributeName="transform" type="rotate" values="0 0 0;360 0 0" times="0;1" dur="1s" calcMode="spline" keySplines="0.2 0 0.8 1" begin="0" repeatCount="indefinite"></animateTransform>
+    </circle><circle cx="0" cy="0" r="16.666666666666668" fill="none" stroke="#5bc0de" stroke-width="3" stroke-dasharray="52.35987755982989 52.35987755982989" transform="rotate(106.116)">
+      <animateTransform attributeName="transform" type="rotate" values="0 0 0;360 0 0" times="0;1" dur="1s" calcMode="spline" keySplines="0.2 0 0.8 1" begin="-0.2" repeatCount="indefinite"></animateTransform>
+    </circle><circle cx="0" cy="0" r="25" fill="none" stroke="#5cb85c" stroke-width="3" stroke-dasharray="78.53981633974483 78.53981633974483" transform="rotate(194.991)">
+      <animateTransform attributeName="transform" type="rotate" values="0 0 0;360 0 0" times="0;1" dur="1s" calcMode="spline" keySplines="0.2 0 0.8 1" begin="-0.4" repeatCount="indefinite"></animateTransform>
+    </circle><circle cx="0" cy="0" r="33.333333333333336" fill="none" stroke="#f0ad4e" stroke-width="3" stroke-dasharray="104.71975511965978 104.71975511965978" transform="rotate(281.875)">
+      <animateTransform attributeName="transform" type="rotate" values="0 0 0;360 0 0" times="0;1" dur="1s" calcMode="spline" keySplines="0.2 0 0.8 1" begin="-0.6" repeatCount="indefinite"></animateTransform>
+    </circle><circle cx="0" cy="0" r="41.666666666666664" fill="none" stroke="#d9534f" stroke-width="3" stroke-dasharray="130.89969389957471 130.89969389957471" transform="rotate(350.786)">
+      <animateTransform attributeName="transform" type="rotate" values="0 0 0;360 0 0" times="0;1" dur="1s" calcMode="spline" keySplines="0.2 0 0.8 1" begin="-0.8" repeatCount="indefinite"></animateTransform>
+    </circle></g>
+    </svg>
+  </my-app>
+</div>
+
+<script>
+    System.import('app').catch(function(err){ console.error(err);  });
+</script>
+<!--<script src="bower_components/semantic/dist/semantic.min.js"></script>-->
+<!--<script src="bower_components/jquery/dist/jquery.min.js"></script>-->
+</body>
+</html>

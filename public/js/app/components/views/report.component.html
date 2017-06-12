@@ -1,0 +1,182 @@
+<ngb-tabset (tabChange)="beforeChange($event)">
+  <ngb-tab  id="1">
+    <ng-template ngbTabTitle>Проблемы</ng-template>
+    <ng-template ngbTabContent>
+      <div class="filterReport">
+        <form>
+          <md-select title="" placeholder="Фильтр по дате" form="addComing" name="dateFilter" [(ngModel)]="filter.dateFilter">
+            <md-option value="null"></md-option>
+            <md-option value="today">Сегоднящные записи</md-option>
+            <md-option value="yesterday">Вчерашные записи</md-option>
+            <md-option value="currentWeek">Текущая неделя</md-option>
+            <md-option value="lastWeek">Прошлая неделя</md-option>
+            <md-option value="currentMonth">Текущий месяц</md-option>
+            <md-option value="lastMonth">Прошлый месяц</md-option>
+          </md-select>
+          <md-select title="" placeholder="Фильтр по пользовательям" name="userFilter" [(ngModel)]="filter.userFilter">
+            <md-option value="null"></md-option>
+            <md-option *ngFor="let user  of users" value="{{user.id}}">{{user.name}}</md-option>
+          </md-select>
+          <md-input-container>
+            <input mdInput  class="reportDate"  [mdDatepicker]="picker" placeholder="Показать с" name="fromDate" [(ngModel)]="filter.fromDate">
+            <button mdSuffix [mdDatepickerToggle]="picker"></button>
+          </md-input-container>
+          <md-datepicker #picker></md-datepicker>
+          <md-input-container>
+            <input mdInput class="reportDate" [mdDatepicker]="picker2" placeholder="до" name="toDate" [(ngModel)]="filter.toDate">
+            <button mdSuffix [mdDatepickerToggle]="picker2"></button>
+          </md-input-container>
+          <md-datepicker #picker2></md-datepicker>
+          <button (click)="filterRows(filter, 'report')" class="btn btn4">>> >></button>
+        </form>
+      </div>
+
+      <div id="listOfJournal">
+        <form id="addComing" ></form>
+        <table id="template_table" class="center">
+          <tr id="table_header">
+            <td class="number-header">№</td>
+            <td>Дата</td>
+            <td>Пользователь</td>
+            <td>Клиент</td>
+            <td>Телефон</td>
+            <td>Проблема</td>
+          </tr>
+          <tr *ngFor="let report of reports">
+            <td class="number">{{report.number}}</td>
+            <td>{{report.date}}</td>
+            <td>{{report.user}}</td>
+            <td>{{report.client}}</td>
+            <td>{{report.telephone}}</td>
+            <td>{{report.problem}}</td>
+          </tr>
+        </table>
+        <ngb-pagination class="marginTop" [collectionSize]="120" [(page)]="page" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+      </div>
+    </ng-template>
+  </ngb-tab>
+
+  <ngb-tab id="2">
+    <ng-template ngbTabTitle>Входы и выходы</ng-template>
+    <ng-template ngbTabContent>
+      <div class="filterReport">
+        <form>
+          <md-select title="" placeholder="Фильтр по дате" form="addComing" name="dateFilter" [(ngModel)]="filter.dateFilter">
+            <md-option value="null"></md-option>
+            <md-option value="today">Сегоднящные записи</md-option>
+            <md-option value="yesterday">Вчерашные записи</md-option>
+            <md-option value="currentWeek">Текущая неделя</md-option>
+            <md-option value="lastWeek">Прошлая неделя</md-option>
+            <md-option value="currentMonth">Текущий месяц</md-option>
+            <md-option value="lastMonth">Прошлый месяц</md-option>
+          </md-select>
+          <md-select title="" placeholder="Фильтр по пользовательям" name="userFilter" [(ngModel)]="filter.userFilter">
+            <md-option value="null"></md-option>
+            <md-option *ngFor="let user  of users" value="{{user.id}}">{{user.name}}</md-option>
+          </md-select>
+          <md-input-container>
+            <input mdInput  class="reportDate"  [mdDatepicker]="picker" placeholder="Показать с" name="fromDate" [(ngModel)]="filter.fromDate">
+            <button mdSuffix [mdDatepickerToggle]="picker"></button>
+          </md-input-container>
+          <md-datepicker #picker></md-datepicker>
+          <md-input-container>
+            <input mdInput class="reportDate" [mdDatepicker]="picker2" placeholder="до" name="toDate" [(ngModel)]="filter.toDate">
+            <button mdSuffix [mdDatepickerToggle]="picker2"></button>
+          </md-input-container>
+          <md-datepicker #picker2></md-datepicker>
+          <button (click)="filterRows(filter, 'sign')" class="btn btn4">>> >></button>
+        </form>
+      </div>
+
+      <div>
+        <form ></form>
+        <table class="template_table center">
+          <tr class="table_header">
+            <td class="number-header">№</td>
+            <td>Дата входа</td>
+            <td>Последные действие</td>
+            <td>Дата выхода</td>
+            <td>Пользователь</td>
+            <td>IP-адресс</td>
+          </tr>
+          <tr *ngFor="let sign of signs">
+            <td class="number">{{sign.number}}</td>
+            <td>{{sign.dateEntry}}</td>
+            <td></td>
+            <td>{{sign.dateExit}}</td>
+            <td>{{sign.username}}</td>
+            <td></td>
+          </tr>
+        </table>
+        <ngb-pagination class="marginTop" [collectionSize]="120" [(page)]="page" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+
+      </div>
+    </ng-template>
+  </ngb-tab>
+
+  <ngb-tab id="3">
+    <ng-template ngbTabTitle>Общие проблемы</ng-template>
+    <ng-template ngbTabContent>
+      <div class="filterReport">
+        <form>
+          <md-select title="" placeholder="Фильтр по дате" form="addComing" name="dateFilter" [(ngModel)]="filter.dateFilter">
+            <md-option value="null"></md-option>
+            <md-option value="today">Сегоднящные записи</md-option>
+            <md-option value="yesterday">Вчерашные записи</md-option>
+            <md-option value="currentWeek">Текущая неделя</md-option>
+            <md-option value="lastWeek">Прошлая неделя</md-option>
+            <md-option value="currentMonth">Текущий месяц</md-option>
+            <md-option value="lastMonth">Прошлый месяц</md-option>
+          </md-select>
+          <md-select title="" placeholder="Фильтр по пользовательям" name="userFilter" [(ngModel)]="filter.userFilter">
+            <md-option value="null"></md-option>
+            <md-option *ngFor="let user  of users" value="{{user.id}}">{{user.name}}</md-option>
+          </md-select>
+          <md-input-container>
+            <input mdInput  class="reportDate"  [mdDatepicker]="picker" placeholder="Показать с" name="fromDate" [(ngModel)]="filter.fromDate">
+            <button mdSuffix [mdDatepickerToggle]="picker"></button>
+          </md-input-container>
+          <md-datepicker #picker></md-datepicker>
+          <md-input-container>
+            <input mdInput class="reportDate" [mdDatepicker]="picker2" placeholder="до" name="toDate" [(ngModel)]="filter.toDate">
+            <button mdSuffix [mdDatepickerToggle]="picker2"></button>
+          </md-input-container>
+          <md-datepicker #picker2></md-datepicker>
+          <button (click)="filterRows(filter, 'problem')" class="btn btn4">>> >></button>
+        </form>
+      </div>
+
+      <div>
+        <form></form>
+        <table class="template_table center">
+          <tr class="table_header">
+            <td class="number-header">№</td>
+            <td>Дата создание</td>
+            <td>Дата решение</td>
+            <td>Пользователь</td>
+            <td>Проблема</td>
+            <td>
+              <div class="settings editor"></div>
+            </td>
+          </tr>
+          <tr *ngFor="let problem of problems">
+            <td class="number">{{problem.number}}</td>
+            <td>{{problem.dateCreate}}</td>
+            <td>{{problem.dateSolve}}</td>
+            <td>{{problem.user}}</td>
+            <td>{{problem.problem}}</td>
+            <td>
+              <label>
+                <md-checkbox [ngModel]="problem.status" (change)="solvedChanging(id.value, status.checked);" #status [color]="primary">Решено</md-checkbox>
+              </label>
+              <div *ngIf="!problem.changed && user.pReport.update" class="save editor toogle"></div>
+              <div *ngIf="problem.changed && user.pReport.update" (click)="saveSolvedProblem(id.value, status.checked);" class="saveRed editor toogle"></div>
+              <input hidden type="number" #id value="{{problem.id}}">
+            </td>
+          </tr>
+        </table>
+        <ngb-pagination class="marginTop" [collectionSize]="120" [(page)]="page" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+      </div>
+    </ng-template>
+  </ngb-tab>
+</ngb-tabset>

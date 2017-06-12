@@ -1,0 +1,18 @@
+<td class="number"></td>
+<td></td>
+<td colspan="4">
+  <table class="ipTable template_table" >
+    <tr class="table_header">
+      <td class="number-header">№</td>
+      <td>Название</td>
+      <td>Телефон</td>
+      <td>IP-адресс</td>
+    </tr>
+    <tr *ngFor="let client of clients">
+      <td class="number">{{client.number}}</td>
+      <td>{{client.name}}</td>
+      <td>{{client.telephone}}</td>
+      <td>{{client.ipAddress}}</td>
+    </tr>
+  </table>
+</td>

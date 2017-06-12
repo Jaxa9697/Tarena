@@ -1,0 +1,31 @@
+<div id="listOfJournal">
+  <table id="template_table" class="center">
+    <tr id="table_header">
+      <td class="number-header">№</td>
+      <td>Название</td>
+      <td>Айтишник</td>
+      <td>Телефон</td>
+      <td>Моб. тел</td>
+      <td>IP-address</td>
+      <td>VLAN</td>
+      <td>
+        <div class="settings editor"></div>
+      </td>
+    </tr>
+    <tr *ngFor="let row of rows">
+      <td class="number">{{row.number}} </td>
+      <td>{{row.name}}</td>
+      <td>{{row.itMan}}</td>
+      <td>{{row.telephone}}</td>
+      <td>{{row.phone}}</td>
+      <td>{{row.ipAddress}}</td>
+      <td>{{row.vlan}}</td>
+      <td class="settingsOfCredits">
+        <div *ngIf="user.pWifi.update" (click)="editWifi(id.value);" class="change editor toogle"></div>
+        <div *ngIf="user.pWifi.remove" (click)="deleteWifi(id.value);" class="delete editor toogle"></div>
+        <input type="number" title="" value="{{row.id}}" #id hidden>
+      </td>
+    </tr>
+  </table>
+</div>
+<button (click)="addWifi();" class="btn btn2 marginTop">Добавить</button>

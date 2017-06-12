@@ -1,0 +1,27 @@
+<md-card class="example-card">
+  <md-card-header>
+    <div md-card-avatar class="example-header-image"></div>
+    <md-card-title>Изменение паролья</md-card-title>
+  </md-card-header>
+  <md-card-content>
+    <form id="changePassword"></form>
+      <md-input-container class="example-full-width">
+        <input mdInput autocomplete="old-password" required [(ngModel)]="password.currentPassword" type="text" placeholder="Текущий пароль">
+      </md-input-container>
+
+      <md-input-container class="example-full-width">
+        <input mdInput autocomplete="new-password" required #password minlength="4" [(ngModel)]="password.newPassword" type="password"  placeholder="Новый пароль">
+        <md-hint align="end">{{password.value.length}} / 4 min</md-hint>
+      </md-input-container>
+
+      <md-input-container class="example-full-width">
+        <input mdInput autocomplete="repeat-new-password" required #repeatPassword [(ngModel)]="password.repeatNewPassword" type="password" placeholder="Повтор нового паролья">
+        <md-hint *ngIf="password.value !== repeatPassword.value" [style.color]="'red'" align="end">Пароли не совподають</md-hint>
+      </md-input-container>
+
+  </md-card-content>
+  <md-card-actions>
+    <button (click)="changePassword(password);" class="btn btn3">Сохранить</button>
+  </md-card-actions>
+</md-card>
+

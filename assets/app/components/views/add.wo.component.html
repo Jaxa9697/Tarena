@@ -1,0 +1,74 @@
+
+<div class="modal-header">
+  <h4 class="modal-title">Добавление нового элемента</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+  <form id="addingForm" #addForm="ngForm"></form>
+    <table id="headerOfComingsForm">
+      <tr>
+        <td>Название</td>
+        <td>
+          <input type="text" #_name value="{{editedWifi.name}}" form="addingForm" required title="">
+        </td>
+      </tr>
+      <tr>
+        <td>Айтишник</td>
+        <td>
+          <input type="text" #_itMan value="{{editedWifi.itMan}}" form="addingForm" required title="">
+        </td>
+      </tr>
+      <tr>
+        <td>Адресс</td>
+        <td>
+          <input type="text" #_address value="{{editedWifi.address}}" form="addingForm" required title="">
+        </td>
+      </tr>
+      <tr>
+        <td>№ паспорта</td>
+        <td>
+          <input type="text" #_passport value="{{editedWifi.passport}}" form="addingForm" required title="">
+        </td>
+      </tr>
+      <tr>
+        <td>Телефон</td>
+        <td>
+          <input type="tel" #_telephone value="{{editedWifi.telephone}}" form="addingForm" title="">
+        </td>
+      </tr>
+      <tr>
+        <td>Моб. телефон</td>
+        <td>
+          <input type="tel" #_phone value="{{editedWifi.phone}}" form="addingForm" title="">
+        </td>
+      </tr>
+      <tr>
+        <td>Vlan</td>
+        <td>
+          <select title="" (change)="changingVlanSelect();" #macAddress="ngModel" [(ngModel)]="_vlan" name="mac">
+            <option *ngFor="let vlan of vlans" value="{{vlan.ID}}">{{vlan.name}}</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>IP-address</td>
+        <td>
+          <input type="text" list="free" #_ipAddress value="{{editedWifi.ipAddress}}" form="addingForm" title="">
+          <datalist id="free">
+            <option *ngFor="let freeIp of freeIps" value="{{freeIp}}">
+          </datalist>
+        </td>
+      </tr>
+    </table>
+</div>
+<div class="modal-footer">
+  <!--<input type="number" hidden value="{{idClient}}" form="addingForm" title="">-->
+  <button (click)="AddNew(_name.value, _itMan.value, _address.value, _passport.value,
+   _telephone.value, _phone.value, _ipAddress.value);" [hidden]="!editForm"  class="btn btn2 btn3">Добавить</button>
+
+  <button (click)="update( _name.value, _itMan.value, _address.value, _passport.value,
+   _telephone.value, _phone.value, _ipAddress.value);" [hidden]="editForm" class="btn btn2 btn3" form="addingForm">Сохранить измениния</button>
+</div>

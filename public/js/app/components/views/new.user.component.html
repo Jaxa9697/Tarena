@@ -1,0 +1,29 @@
+<div class="modal-header">
+  <h4 class="modal-title">Добавление нового пользователья</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="top-content" id="registration">
+    <form role="form" autocomplete="off" action="/login" method="post" >
+      <md-input-container class="example-full-width">
+        <input mdInput autocomplete="new-username" type="text" #login minlength="4" [(ngModel)]="userSignUp.login" required name="usernameLogin" placeholder="Имя пользователя...">
+        <md-hint align="end">{{login.value.length}} / 4 min</md-hint>
+      </md-input-container>
+      <md-input-container class="example-full-width">
+        <input mdInput  autocomplete="new-password" type="password" #password minlength="4" [(ngModel)]="userSignUp.password" required name="passwordLogin" placeholder="Пароль...">
+        <md-hint align="end">{{password.value.length}} / 4 min</md-hint>
+      </md-input-container>
+      <md-select class="example-full-width" placeholder="Роль" [(ngModel)]="userSignUp.status" #status="ngModel" required title="" name="status">
+        <md-option value="admin">Администратор</md-option>
+        <md-option value="accountant">Бухгалтер</md-option>
+        <md-option value="operator">Оператор</md-option>
+        <md-option value="technician">Техник</md-option>
+      </md-select>
+    </form>
+  </div>
+</div>
+<div class="modal-footer">
+  <button [disabled]="login.invalid || password.invalid || status.invalid" (click)="onSignUp(userSignUp);" type="submit" class="btn btn2">Регистрация</button>
+</div>

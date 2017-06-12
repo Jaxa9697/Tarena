@@ -1,0 +1,83 @@
+<div class="modal-header">
+  <h4 class="modal-title">
+    <img src="images/icon.png" style="width: 20%; margin-right: 20px;">Результат поиска
+  </h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <table id="headerOfComingsForm">
+    <tr>
+      <td>Название</td>
+      <td>{{result.name_cl}}</td>
+      <td>{{result.atcName}}</td>
+      <td>
+        <a href="http://{{result.atcIp}}" target="_blank"> {{result.atcIp}}</a>
+      </td>
+    </tr>
+    <tr>
+      <td>Телефон</td>
+      <td>{{result.telephone}}</td>
+      <td>Тариф</td>
+      <td>{{result.tariffName}}</td>
+    </tr>
+    <tr>
+      <td>Моб. телефон</td>
+      <td>{{result.phone}}</td>
+    </tr>
+    <tr>
+      <td>Адресс</td>
+      <td>{{result.address}}</td>
+      <td>Порт</td>
+      <td>{{result.port}}</td>
+    </tr>
+    <tr>
+      <td>№ паспорта</td>
+      <td>{{result.n_passport}}</td>
+      <td>Stan</td>
+      <td>{{result.stan}}</td>
+    </tr>
+    <tr>
+      <td>Ip-address</td>
+      <td>{{result.ipAddress}}</td>
+      <td>Line</td>
+      <td>{{result.line}}</td>
+    </tr>
+    <tr>
+      <td>Маска подсети</td>
+      <td>{{result.subnet_mask}}</td>
+      <td>VPI</td>
+      <td>{{result.vpi}}</td>
+    </tr>
+    <tr>
+      <td>Шлюз</td>
+      <td>{{result.gateway}}</td>
+      <td>VCI</td>
+      <td>{{result.vci}}</td>
+    </tr>
+    <tr>
+      <td>VLAN</td>
+      <td>{{result.vlan}}</td>
+      <td>ALC</td>
+      <td>{{result.alc}}</td>
+    </tr>
+    <tr>
+      <td>MAC-address</td>
+      <td>{{result.macAddress}}</td>
+      <td>Статус</td>
+      <td>{{result.status}}</td>
+    </tr>
+    <tr>
+      <td colspan="4" [style.width]="'100%'">
+        <md-input-container [style.width]="'99%'">
+          <textarea mdInput min="10" #problem name="problem" placeholder="Опишите проблему"></textarea>
+          <md-hint align="end">{{problem.value.length}} / 10 min</md-hint>
+        </md-input-container>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="modal-footer">
+  <button [disabled]="problem.value.length <= 10" (click)="saveReport(problem.value);" class="btn btn2 btn3">Сохранить</button>
+</div>

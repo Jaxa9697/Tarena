@@ -1,0 +1,450 @@
+
+<!--<header id="header" class="center bodyLayout">-->
+  <!--<div id="contentHeader">-->
+    <!--<div id="time"></div>-->
+      <!--<img id="icon" class="iconTop2" src="images/icon.png" width="300">-->
+      <!--<div class="menu">-->
+        <!--<ul id="menu">-->
+
+        <!--</ul>-->
+      <!--</div>-->
+    <!--<div id="userInfo">-->
+      <!--<p>Имя: </p>-->
+      <!--<p>Статус: <span id="role"></span></p>-->
+      <!--<p>-->
+        <!--<a href="logoff">Выход</a>-->
+      <!--</p>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div id="contentBody" #contentBody>-->
+    <!--<div #content></div>-->
+  <!--</div>-->
+  <!--<div id="footer">-->
+    <!---->
+  <!--</div>-->
+<!--</header>-->
+
+<div class="gb__main-wrapper">
+  <aside id="nav" class="lter">
+    <section class="vbox">
+      <section class="w-f nav-xs">
+        <div data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railopacity="0.2">
+          <div class="clearfix wrapper dk logo-wrapper">
+            <a class="logo text-center toogle" (click)="createComponentDynamically(mainCmp);">
+              <img src="images/icon.png" class="svg-icon icon-logo">
+            </a>
+          </div>
+          <nav class="nav-primary">
+            <ul class="nav2">
+              <!--<li><a class="toogle" (click)="createComponentDynamically(profCmp);">Профил</a></li>-->
+              <!--<li>-->
+                <!--<a class="toogle" (click)="createComponentDynamically(mainCmp);">-->
+                    <!--<span>Главная</span>-->
+                <!--</a>-->
+              <!--</li>-->
+              <li>
+                <a *ngIf="user.pAtc.read" class="toogle" (click)="createComponentDynamically(atcCmp);">
+                  <figure>
+                    <img src="images/atc.png" class="svg-icon">
+                  </figure>
+                  <span>АТС</span>
+                </a>
+              </li>
+              <li>
+                <a *ngIf="user.pVlan.read" class="toogle" (click)="createComponentDynamically(vlanCmp);">
+                  <figure>
+                    <img src="images/vlan.png" class="svg-icon">
+                  </figure>
+                  <span>VLAN</span>
+                </a>
+              </li>
+              <li>
+                <a *ngIf="user.pWifi.read" class="toogle" (click)="createComponentDynamically(wifiCmp);">
+                  <figure>
+                    <img src="images/wifi.png" class="svg-icon">
+                  </figure>
+                  <span>WIFI</span>
+                </a>
+              </li>
+              <li>
+                <a *ngIf="user.pOptics.read" class="toogle" (click)="createComponentDynamically(opticsCmp);">
+                  <figure>
+                    <img src="images/optics.png" class="svg-icon">
+                  </figure>
+                  <span>OPTIC</span>
+                </a>
+              </li>
+              <li>
+                <a *ngIf="user.pReport.read" class="toogle" (click)="createComponentDynamically(reportCmp);">
+                  <figure>
+                    <img src="images/report2.png" class="svg-icon">
+                  </figure>
+                  <span>Отчеты</span>
+                </a>
+              </li>
+              <li>
+                <a *ngIf="user.position == 'admin'" class="toogle" (click)="createComponentDynamically(privCmp);">
+                  <figure>
+                    <img src="images/privilege_icon.png" class="svg-icon">
+                  </figure>
+                  <span>Привлегия</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </section>
+    </section>
+  </aside>
+
+
+  <header id="top-menu" class="header bg-white js-main-top-menu">
+    <div class="header-content application">
+      <input name="componentName" hidden [(ngModel)]="component" #cmp>
+      <h2 class="headertitle">Ассоциация «TARENA» - <span style="color: #ff5a60;">{{cmp.value}}</span></h2>
+      <div class="profile">
+        <div>
+          <!--<table>-->
+            <!--<tr>-->
+              <!--<td>{{user.username}}</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+              <!--<td [ngStyle]="{'opacity':'0.65', 'font-size':'75%'}">{{user.position}}</td>-->
+            <!--</tr>-->
+          <!--</table>-->
+          <div>{{user.username}}</div>
+          <div [ngStyle]="{'opacity':'0.65','font-size':'75%','display':'block'}">{{user.position}}</div>
+        </div>
+        <div>
+          <img [ngStyle]="{'width':'65px','margin-top':'-20px'}" src="images/profile.png">
+          <img class="more-menu toogle" [mdMenuTriggerFor]="menu" src="images/menu.png">
+          <md-menu #menu="mdMenu">
+            <button (click)="createComponentDynamically(profCmp);" md-menu-item>
+              <span>Профиль</span>
+            </button>
+            <a href="logoff">
+              <button md-menu-item>
+                <span>Выход</span>
+              </button>
+            </a>
+          </md-menu>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container2 footer-stick">
+    <section id="content">
+      <section class="vbox stretch">
+        <section class="main-content" id="main-content">
+          <div #content></div>
+        </section>
+      </section>
+    </section>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__content">
+      <p class="author">Copyright JT © (2017) - «TARENA» Application </p>
+    </div>
+  </footer>
+</div>
+<style type="text/css">
+
+  .more-menu{
+    width:17px;
+    margin-top: -20px;
+    margin-left: -5px;
+    opacity: .65;
+  }
+
+  .more-menu:hover{
+    opacity: 1;
+  }
+
+  .profile{
+    text-align: right;
+    margin-top: 20px;
+  }
+
+  .profile div{
+    display: inline-block;
+  }
+
+  .vbox {
+    display: table;
+    border-spacing: 0;
+    position: relative;
+    height: 20%;
+    width: 100%;
+  }
+
+  #content {
+    min-height: 5%;
+    width: 100%;
+  }
+
+  .container2 {
+    width: 100%;
+    margin: 0 auto;
+    padding-right: 32px;
+    padding-left: 32px;
+  }
+
+
+  .footer-stick {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+  }
+
+  h2, .h2 {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    color: #167F92;
+  }
+
+  header.header .headertitle {
+    display: inline-block;
+    margin: 0;
+  }
+
+  header.header .header-content {
+    height: 100%;
+    border-bottom: 1px solid #eaeef1;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+  }
+  header.header {
+    height: 96px;
+    min-height: 0;
+    padding: 0 32px;
+    position: relative;
+  }
+
+  .gb__main-wrapper {
+    margin-left: 96px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    min-height: 96vh;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .site-footer {
+    min-height: 50px;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    font-size: 13px;
+    color: #99a8b7;
+    padding: 0 32px;
+  }
+
+  .site-footer__content *:not(:first-child) {
+    margin-left: 16px;
+  }
+
+  .site-footer__content {
+
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 20px 0 0 0;
+    line-height: normal;
+    border-top: 1px solid #eaeef1;
+  }
+  #nav {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 96px;
+    z-index: 8;
+    background-color: #f2f2f6;
+  }
+
+  *{
+    box-sizing: border-box;
+  }
+
+  nav{
+    display: block;
+  }
+
+  .vbox>section, .vbox>footer {
+    top: 0;
+    bottom: 0;
+    width: 100%;
+  }
+
+  #nav .logo-wrapper {
+    height: 96px;
+    padding: 0;
+    background-color: #e9edf4;
+  }
+
+  .clearfix {
+    clear: both;
+  }
+
+  .clearfix:before, .clearfix:after {
+    content: " ";
+    display: table;
+  }
+
+  #nav a.logo {
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+    position: relative;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  a {
+    color: #3c4144;
+    text-decoration: none;
+  }
+
+  a {
+    background-color: transparent;
+  }
+
+  #nav .svg-icon.icon-logo {
+    margin-top: 19px;
+    width: 77px;
+    height: 60px;
+  }
+
+  #nav .svg-icon {
+    width: 32px;
+    height: 32px;
+    opacity: 1;
+  }
+
+  #nav .nav-primary>ul>li>a {
+    height: 68px;
+    padding: 8px 0;
+  }
+
+  .nav2 {
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .nav2:before, .nav2:after {
+    content: " ";
+    display: table;
+  }
+
+  .nav2:after {
+    clear: both;
+  }
+
+  .nav2>li {
+    position: relative;
+    display: block;
+  }
+
+  .nav-xs .nav-primary>ul>li>a {
+    position: relative;
+    padding: 0;
+    font-size: 11px;
+    text-align: center;
+    height: 50px;
+    overflow-y: hidden;
+    border: none;
+  }
+  /*#nav .nav-primary>ul>li>a {
+        height: auto;
+        padding: 8px 0;
+    }*/
+
+  #nav a:not(.logo) {
+    opacity: 0.4;
+    line-height: 13px;
+    color: #4c5d6e;
+  }
+
+  a:not(.logo).current {
+    background-color: #f9f9fb;
+  }
+
+  #nav a:not(.logo):hover, #nav a:not(.logo).current {
+    background-color: inherit;
+    opacity: 1;
+    color: #4c5d6e;
+  }
+
+  .nav-xs .nav-primary ul li a {
+    font-size: 12px;
+  }
+
+  .nav-primary ul.nav>li>a {
+    padding: 8px 15px;
+    position: relative;
+    -webkit-transition: background-color .2s ease-in-out 0s;
+    transition: background-color .2s ease-in-out 0s;
+  }
+
+
+  #nav .nav-primary>ul>li>a svg.svg-icon {
+    height: 24px;
+  }
+
+  .nav-xs .nav-primary>ul>li>a {
+    position: relative;
+    padding: 0;
+    font-size: 11px;
+    text-align: center;
+    height: 50px;
+    overflow-y: hidden;
+    border: none;
+  }
+
+  #nav .nav-primary>ul>li>a span {
+    text-align: center;
+    vertical-align: middle;
+    display: inline-block;
+    height: auto;
+    width: 100%;
+  }
+
+  .nav-xs .nav-primary ul li a {
+    font-size: 12px;
+  }
+
+  figure{
+    text-align: center;
+    margin: 12px 0;
+    opacity: 0.4;
+  }
+
+  figure:hover{
+    opacity: 1;
+  }
+
+
+</style>

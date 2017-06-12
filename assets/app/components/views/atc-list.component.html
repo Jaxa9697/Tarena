@@ -1,0 +1,11 @@
+<button *ngIf="user.pAtc.create" (click)="openModalForm();" class="btn btn2">Добавить</button>
+<ngb-accordion [closeOthers]="true">
+  <ngb-panel *ngFor="let atc of atces" id="static-{{atc.id}}">
+    <ng-template ngbPanelTitle>
+      <span style="text-align: center;">&#9733; <b>{{atc.name}}</b> {{atc.ipAddress}} &#9733;</span>
+    </ng-template>
+    <ng-template ngbPanelContent>
+      <atc-app [atcId]="atc" [user]="user"></atc-app>
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>

@@ -1,0 +1,37 @@
+<div id="listOfJournal">
+  <table id="template_table" class="center">
+    <tr id="table_header">
+      <td class="number-header">Port/ ALC</td>
+      <td>Название</td>
+      <td>Телефон</td>
+      <td>Моб. тел</td>
+      <td>IP-address</td>
+      <td>VLAN</td>
+      <td>МAC-address</td>
+      <td>Stan</td>
+      <td>Line</td>
+      <td>VPI/VCI</td>
+      <td *ngIf="user.pAtc.update || user.pAtc.remove || user.pAtc.create">
+        <div class="settings editor"></div>
+      </td>
+    </tr>
+    <tr *ngFor="let atc of atces">
+      <td  class="number">{{atc.port + "/" + atc.alc}} </td>
+      <td>{{atc.name}}</td>
+      <td>{{atc.telephone}}</td>
+      <td>{{atc.phone}}</td>
+      <td>{{atc.ipAddress}}</td>
+      <td>{{atc.vlan}}</td>
+      <td>{{atc.macAddress}}</td>
+      <td>{{atc.stan}}</td>
+      <td>{{atc.line}}</td>
+      <td>{{atc.vpi + "/" + atc.vci}}</td>
+      <td  *ngIf="user.pAtc.update || user.pAtc.remove || user.pAtc.create" class="settingsOfCredits">
+        <div *ngIf="user.pAtc.update" [hidden]="!atc.isData" (click)="editAtc(id.value);" class="change editor toogle"></div>
+        <div *ngIf="user.pAtc.remove" [hidden]="!atc.isData" (click)="deleteAtc(id.value);" class="delete editor toogle"></div>
+        <button *ngIf="user.pAtc.create" [hidden]="atc.isData" (click)="addAtc(id.value);" class="btn btn4">+</button>
+        <input type="number" title="" value="{{atc.id}}" #id hidden>
+      </td>
+    </tr>
+  </table>
+</div>
