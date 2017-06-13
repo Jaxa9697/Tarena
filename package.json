@@ -9,6 +9,9 @@
     "postinstall": "typings install",
     "typings": "typings"
   },
+  "engines": {
+    "node": "6.9.4"
+  },
   "licenses": [
     {
       "type": "MIT",
