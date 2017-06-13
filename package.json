@@ -10,7 +10,8 @@
     "typings": "typings"
   },
   "engines": {
-    "node": "6.9.4"
+    "node": "6.9.4",
+    "npm": "5.0.2"
   },
   "licenses": [
     {
