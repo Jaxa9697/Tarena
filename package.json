@@ -5,9 +5,7 @@
   "scripts": {
     "start": "node ./app",
     "vendor": "gulp vendor",
-    "gulp": "npm run vendor && gulp",
-    "postinstall": "typings install",
-    "typings": "typings"
+    "gulp": "npm run vendor && gulp"
   },
   "engines": {
     "node": "6.9.4",
