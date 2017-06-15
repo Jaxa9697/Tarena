@@ -1,6 +1,8 @@
 
 <div class="modal-header">
-  <h4 class="modal-title">Добавление нового элемента</h4>
+  <h4 class="modal-title">
+    <img src="images/icon.png" style="width: 15%; margin-right: 20px;">{{formType}}
+  </h4>
   <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -8,67 +10,77 @@
 <div class="modal-body">
 
   <form id="addingForm" #addForm="ngForm"></form>
-    <table id="headerOfComingsForm">
-      <tr>
-        <td>Название</td>
-        <td>
-          <input type="text" #_name value="{{editedWifi.name}}" form="addingForm" required title="">
-        </td>
-      </tr>
-      <tr>
-        <td>Айтишник</td>
-        <td>
-          <input type="text" #_itMan value="{{editedWifi.itMan}}" form="addingForm" required title="">
-        </td>
-      </tr>
-      <tr>
-        <td>Адресс</td>
-        <td>
-          <input type="text" #_address value="{{editedWifi.address}}" form="addingForm" required title="">
-        </td>
-      </tr>
-      <tr>
-        <td>№ паспорта</td>
-        <td>
-          <input type="text" #_passport value="{{editedWifi.passport}}" form="addingForm" required title="">
-        </td>
-      </tr>
-      <tr>
-        <td>Телефон</td>
-        <td>
-          <input type="tel" #_telephone value="{{editedWifi.telephone}}" form="addingForm" title="">
-        </td>
-      </tr>
-      <tr>
-        <td>Моб. телефон</td>
-        <td>
-          <input type="tel" #_phone value="{{editedWifi.phone}}" form="addingForm" title="">
-        </td>
-      </tr>
-      <tr>
-        <td>Vlan</td>
-        <td>
-          <select title="" (change)="changingVlanSelect();" #macAddress="ngModel" [(ngModel)]="_vlan" name="mac">
-            <option *ngFor="let vlan of vlans" value="{{vlan.ID}}">{{vlan.name}}</option>
-          </select>
-        </td>
-      </tr>
-      <tr>
-        <td>IP-address</td>
-        <td>
-          <input type="text" list="free" #_ipAddress value="{{editedWifi.ipAddress}}" form="addingForm" title="">
+  <table  class="example-full-width" cellspacing="0">
+    <tr>
+      <td style="width: 65%">
+        <md-input-container>
+          <input mdInput required placeholder="Название" type="text" #_name value="{{editedWifi.name}}" form="addingForm">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container>
+          <input type="text" mdInput placeholder="№ пасспорта" #_passport value="{{editedWifi.passport}}" form="addingForm">
+        </md-input-container>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <md-input-container>
+          <input type="text" required mdInput placeholder="Айтишник" #_itMan value="{{editedWifi.itMan}}" form="addingForm">
+        </md-input-container>
+      </td>
+    </tr>
+  </table>
+
+  <p>
+    <md-input-container class="example-full-width">
+      <textarea mdInput placeholder="Адресс" #_address value="{{editedWifi.address}}" form="addingForm"></textarea>
+    </md-input-container>
+  </p>
+
+  <table class="example-full-width">
+    <tr>
+      <td>
+        <md-input-container>
+          <input type="tel" mdInput required placeholder="Телефон" #_telephone value="{{editedWifi.telephone}}" form="addingForm">
+        </md-input-container>
+      </td>
+      <td style="width: 60%">
+        <md-input-container>
+          <input type="tel" mdInput placeholder="Мобильный телефон" #_phone value="{{editedWifi.phone}}" form="addingForm">
+        </md-input-container>
+      </td>
+    </tr>
+  </table>
+
+  <table>
+    <tr>
+      <td>
+        <md-select placeholder="Vlan" required (change)="changingVlanSelect();" #macAddress="ngModel" [(ngModel)]="_vlan" name="mac">
+          <md-option *ngFor="let vlan of vlans" value="{{vlan.ID}}">{{vlan.name}}</md-option>
+        </md-select>
+      </td>
+      <td>
+        <md-input-container>
+          <input mdInput required placeholder="IP-address" type="text" list="free" #_ipAddress value="{{editedWifi.ipAddress}}" form="addingForm">
           <datalist id="free">
             <option *ngFor="let freeIp of freeIps" value="{{freeIp}}">
           </datalist>
-        </td>
-      </tr>
-    </table>
+        </md-input-container>
+      </td>
+    </tr>
+  </table>
 </div>
 <div class="modal-footer">
   <!--<input type="number" hidden value="{{idClient}}" form="addingForm" title="">-->
   <button (click)="AddNew(_name.value, _itMan.value, _address.value, _passport.value,
-   _telephone.value, _phone.value, _ipAddress.value);" [hidden]="!editForm"  class="btn btn2 btn3">Добавить</button>
+   _telephone.value, _phone.value, _ipAddress.value);" [hidden]="!editForm"  class="btn btn2">Добавить</button>
 
   <button (click)="update( _name.value, _itMan.value, _address.value, _passport.value,
-   _telephone.value, _phone.value, _ipAddress.value);" [hidden]="editForm" class="btn btn2 btn3" form="addingForm">Сохранить измениния</button>
+   _telephone.value, _phone.value, _ipAddress.value);" [hidden]="editForm" class="btn btn2" form="addingForm">Сохранить измениния</button>
 </div>
+<style>
+  md-select,md-input-container{
+    width: 99%;
+  }
+</style>

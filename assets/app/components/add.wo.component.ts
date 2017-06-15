@@ -17,6 +17,7 @@ export class AddWOComponent{
   @Input() editedWifi: Wifi;
   @Input() editForm;
   @Input() type: number;
+  formType: string = "";
 
   vlans;
 
@@ -28,6 +29,13 @@ export class AddWOComponent{
   ){}
 
   ngOnInit(){
+
+    if(this.editForm){
+      this.formType = "Добавление нового клиента";
+    }else {
+      this.formType = "Изменение данные клиента";
+    }
+
     this.headerService.getVlanList()
       .subscribe((data)=>{
         this.vlans = data.vlans;

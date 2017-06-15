@@ -17,7 +17,7 @@
       <td class="number">{{row.number}} </td>
       <td>{{row.username}}</td>
       <td>{{row.position}}</td>
-      <td class="align-left">
+      <td>
           <section>
             <md-slide-toggle (change)="changePrivileges(id.value);" [(ngModel)]="row.pAtc.read" [color]="primary"  [(checked)]="row.pAtc.read">
               Чтение
@@ -155,8 +155,4 @@
   </table>
 </div>
 <button (click)="addNewUser();" class="btn btn2 marginTop">Новый пользователь</button>
-<style>
-  .align-left{
-    text-align: left;
-  }
-</style>
+
