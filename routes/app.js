@@ -618,7 +618,7 @@ router.post('/saveReport', function (req, res) {
 
   var date = new Date(Date.now());
   var report = {
-    idUser: req.session.ID,
+    id_user: req.session.ID,
     problem: req.body.problem,
     idAtc: req.body.id,
     date: main.getDate(date)
