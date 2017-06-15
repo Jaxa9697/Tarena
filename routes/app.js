@@ -3,7 +3,7 @@ var express = require('express'),
     app = require('../app'),
     user = require('../models/users')(app.connection),
     atc = require('../models/atc.tasks')(app.connection),
-    bcrypt = require("bcrypt-nodejs"),
+    bcrypt = require('bcryptjs'),
     main = require("../controllers/common-functions"),
     SALT_WORK_FACTOR = 10;
 
