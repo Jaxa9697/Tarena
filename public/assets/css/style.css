@@ -88,7 +88,7 @@ h3 {
 .top-content .description a:focus { border-bottom: 1px dotted #fff; }
 
 .form-box {
-	margin-top: 35px;
+  margin: 50px auto;
 }
 
 .form-top {

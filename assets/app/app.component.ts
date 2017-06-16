@@ -15,6 +15,8 @@ export class AppComponent {
   private EntryPage:  boolean = false;
   private entryError: boolean = true;
 
+  primary: string = "primary";
+
   @ViewChild('parent', {read: ViewContainerRef})
   parent: ViewContainerRef;
 

@@ -67,6 +67,13 @@ export class HeaderService {
 
   }
 
+  logoff(){
+    return this.http.get('/logoff')
+      .map(()=>{
+        window.location.reload();
+      });
+  }
+
   getReportContent(){
     return this.http.get('/getReportContent')
       .map((data: Response )=> {

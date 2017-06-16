@@ -28,6 +28,8 @@ export class ProfileComponent{
         .subscribe((data)=>{
           if(data.message == "ok"){
             alert("Ваш пароль успешно изменен");
+            this.headerService.logoff()
+              .subscribe(()=>{});
           }else if (data.message == "passwordError"){
             alert("Неверный пароль.");
           }

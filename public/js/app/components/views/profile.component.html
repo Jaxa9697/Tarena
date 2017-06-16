@@ -10,18 +10,15 @@
       </md-input-container>
 
       <md-input-container class="example-full-width">
-        <input mdInput autocomplete="new-password" required #password minlength="4" [(ngModel)]="password.newPassword" type="password"  placeholder="Новый пароль">
-        <md-hint align="end">{{password.value.length}} / 4 min</md-hint>
+        <input mdInput autocomplete="new-password" required #_password minlength="4" [(ngModel)]="password.newPassword" type="password"  placeholder="Новый пароль">
+        <md-hint align="end">{{_password.value.length}} / 4 min</md-hint>
       </md-input-container>
 
       <md-input-container class="example-full-width">
         <input mdInput autocomplete="repeat-new-password" required #repeatPassword [(ngModel)]="password.repeatNewPassword" type="password" placeholder="Повтор нового паролья">
-        <md-hint *ngIf="password.value !== repeatPassword.value" [style.color]="'red'" align="end">Пароли не совподають</md-hint>
+        <md-hint *ngIf="_password.value !== repeatPassword.value" [style.color]="'red'" align="end">Пароли не совподають</md-hint>
       </md-input-container>
-
+    <button (click)="changePassword(password);" class="btn btn2 btn3">Сохранить</button>
   </md-card-content>
-  <md-card-actions>
-    <button (click)="changePassword(password);" class="btn btn3">Сохранить</button>
-  </md-card-actions>
 </md-card>
 

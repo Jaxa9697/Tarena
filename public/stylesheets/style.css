@@ -1,5 +1,5 @@
 body{
-    color:  #003f7b;
+    color:  #167F92;
     font-family: Century Gothic, sans-serif;
     /*background-color: rgba(162, 174, 199, 0.09);;*/
 }
@@ -81,9 +81,10 @@ body{
 }
 
 .headerFixed {
-    position: fixed;
-    padding-top: 0;
-    left: 38%;
+  color: #167F92;
+  position: fixed;
+  padding-top: 30px;
+  left: 37.2%;
 }
 
 .headerFixed h1{

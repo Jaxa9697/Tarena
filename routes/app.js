@@ -69,8 +69,8 @@ router.post('/signUp', function (req, res) {
   bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
     if (err) return next(err);
 
-    bcrypt.hash(req.body.password, salt, null, function(err, hash) {
-      if (err) return next(err);
+    bcrypt.hash(req.body.password, salt, function(err2, hash) {
+      if (err2) return next(err2);
 
       var p = getPrivilegesByRolea(req.body.status);
       var post = {
@@ -418,7 +418,7 @@ router.put('/changePassword', function (req, res) {
             bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
               if (err) return next(err);
 
-              bcrypt.hash(req.body.newPassword, salt, null, function(err, hash) {
+              bcrypt.hash(req.body.newPassword, salt, function(err, hash) {
                 if (err) return next(err);
 
                 atc.updatePassword(hash, req.session.ID, function (err2) {
