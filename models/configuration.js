@@ -9,6 +9,10 @@ var connection = mysql.createPool({
     user: 'sql9180311',
     password: 'cRKXTTzIdG',
     database: 'sql9180311',
+    // host: 'localhost',
+    // user: 'root',
+    // password: '',
+    // database: 'tarena',
     multipleStatements: true
 });
 

@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 
-var appDev = 'assets/app/';
-var appProd = 'public/js/app/';
+var appDev = 'assets/';
+var appProd = 'public/ap';
 var vendor = 'public/js/vendor';
 
 /* JS & TS */
@@ -23,6 +23,14 @@ gulp.task('build-copy', function () {
 
     return gulp.src([appDev + '**/*.html', appDev + '**/*.htm', appDev + '**/*.css'])
         .pipe(gulp.dest(appProd));
+});
+
+var purify = require('gulp-purifycss');
+
+gulp.task('css', function() {
+  return gulp.src('./public/app/example.css')
+    .pipe(purify([appDev + '**/*.html', appDev + '**/*.htm', appDev + '**/*.css']))
+    .pipe(gulp.dest(appProd));
 });
 
 gulp.task('vendor', function() {

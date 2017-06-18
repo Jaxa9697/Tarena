@@ -1,7 +1,7 @@
 // map tells the System loader where to look for things
 var map = {
         // our app is within the app folder
-        app: 'js/app',
+        app: '/',
 
         // angular bundles
         '@angular/core': 'js/vendor/@angular/core/bundles/core.umd.js',
@@ -27,7 +27,7 @@ var map = {
 // packages tells the System loader how to load when no filename and/or no extension
 var packages = {
     app: {
-        main: 'boot.js',
+        main: '/boot.js',
         defaultExtension: 'js'
     },
     rxjs: {
