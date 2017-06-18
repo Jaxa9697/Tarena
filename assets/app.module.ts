@@ -30,8 +30,8 @@ import {NewUserComponent, ProfileComponent} from "./components/profile.component
     VlanComponent, AddComponent,
     MainComponent, ReportComponent,
     ResultSearchComponent, VlansIpComponent,
-    WifiComponent, AddWOComponent,
-    OpticsComponent, PrivilegeComponent,
+    WifiComponent,    AddWOComponent,
+    OpticsComponent,  PrivilegeComponent,
     ProfileComponent, NewUserComponent
   ],
   imports: [
@@ -50,8 +50,8 @@ import {NewUserComponent, ProfileComponent} from "./components/profile.component
     VlanComponent, AddComponent,
     MainComponent, ReportComponent,
     ResultSearchComponent, VlansIpComponent,
-    WifiComponent, AddWOComponent,
-    OpticsComponent, PrivilegeComponent,
+    WifiComponent,    AddWOComponent,
+    OpticsComponent,  PrivilegeComponent,
     ProfileComponent, NewUserComponent
   ],
   bootstrap: [AppComponent]

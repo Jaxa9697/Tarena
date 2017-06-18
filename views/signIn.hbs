@@ -1,49 +1,43 @@
-<div #parent></div>
-<div [hidden]="EntryPage" class="bodyLayout">
-  <div  class="center headerFixed">
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Tarena Application</title>
+  <link rel="stylesheet" href="stylesheets/style-login.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <div class="container">
     <h1>Добро пожаловать</h1>
-    <h4> в сайт ассосации Тарена</h4>
-    <img id="icon" class="icon iconTop" src="images/icon.png" width="300">
+
+    <form class="form" action="signIn" method="post" autocomplete="off">
+      <input autocomplete="new-username" name="username" type="text" placeholder="Логин">
+      <input autocomplete="new-password" name="password" type="password" placeholder="Пароль">
+      <label style="display: block; margin-bottom: 10px;">
+        <input style="margin-right: 5px;" type="checkbox" name="remember">Запомнить меня
+      </label>
+      <button type="submit" id="login-button">Войти</button>
+    </form>
   </div>
-  <div class="clear"></div>
-  <div id="content" class="center">
-    <div class="top-content" id="signIn">
 
-      <div class="inner-bg">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-6 col-sm-offset-3 form-box">
-              <div class="form-top">
-                <div class="form-top-left">
-                  <h3>Войдите в систему</h3>
-                </div>
-                <div class="form-top-right">
-                  <i class="fa fa-key"></i>
-                </div>
-              </div>
-              <div class="form-bottom">
-                <form role="form" action="/login" method="post" #Form1="ngForm" class="login-form">
-                  <md-input-container class="example-full-width">
-                    <input mdInput type="text" #login minlength="4" name="username" [(ngModel)]="user.login" required  placeholder="Имя пользователя...">
-                    <md-hint align="end">{{login.value.length}} / 4 min</md-hint>
-                  </md-input-container>
-                  <md-input-container class="example-full-width">
-                    <input mdInput type="password" #password minlength="4" name="password" [(ngModel)]="user.password" required  placeholder="Пароль...">
-                    <md-hint align="end">{{password.value.length}} / 4 min</md-hint>
-                  </md-input-container>
-
-                  <div class="center">
-                    <label>
-                      <md-checkbox name="remember" [(ngModel)]="user.remember" [color]="primary">Запомнить меня</md-checkbox>
-                    </label>
-                  </div>
-                  <button type="submit" [disabled]="login.invalid || password.invalid || Form1.invalid " (click)="onSubmit(user)" class="btn btn3">Войти!</button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+  <ul class="bg-bubbles">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  <footer class="site-footer">
+    <div class="site-footer__content">
+      <p class="author">Copyright JT © (2017) - «TARENA» Application </p>
     </div>
-  </div>
+  </footer>
 </div>
+</body>
+</html>

@@ -15,29 +15,31 @@ function clearCookie(res) {
 }
 
 router.all('/', function(req, res) {
-  res.render('index');
+  res.render('signIn');
+  // res.render('index');
 });
 
 router.get('/signIn', function (req, res) {
-  if (req.cookies.remember) {
-    user.getOne(req.session.username, function (err, user) {
-      if (err || user === 'undefined' || !user || user === null || user.length === 0) {
-        clearCookie(res);
-      } else {
-        // var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-        // console.log(ip);
-        // console.log(req.ip);
-        //
-        delete user[0].password;
-        res.json({
-          "message":"ok",
-          "user":user[0]
-        });
-      }
-    });
-  } else {
-    res.json({'message': "error"});
-  }
+  console.log(req.body);
+  // if (req.cookies.remember) {
+  //   user.getOne(req.session.username, function (err, user) {
+  //     if (err || user === 'undefined' || !user || user === null || user.length === 0) {
+  //       clearCookie(res);
+  //     } else {
+  //       // var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  //       // console.log(ip);
+  //       // console.log(req.ip);
+  //       //
+  //       delete user[0].password;
+  //       res.json({
+  //         "message":"ok",
+  //         "user":user[0]
+  //       });
+  //     }
+  //   });
+  // } else {
+  //   res.json({'message': "error"});
+  // }
 });
 
 function getPrivilegesByRolea(role) {
@@ -94,45 +96,46 @@ router.post('/signUp', function (req, res) {
 });
 
 router.post('/signIn', function (req, res) {
-
-  user.getOne(req.body.login, function (err, user) {
-    if(err || user === 'undefined' || !user || user === null || user.length === 0){
-      res.json({'message': "error"});
-    }else{
-
-      bcrypt.compare(req.body.password, user[0].password, function(err, isMatch) {
-        if (err)  throw err;
-
-        if (!isMatch) {
-          res.json({'message': "error"});
-        }else{
-          res.cookie('remember', 1, {maxAge: 24 * 60 * 60 * 1000});
-          req.session.authorized = true;
-          req.session.username   = user[0].username;
-          req.session.ID = user[0].ID;
-          req.session.userStatus = user[0].status;
-
-          var record = {
-            dateEntry: main.getDate(new Date(Date.now())),
-            id_user:   user[0].ID
-          };
-
-          atc.recordUserEntry(record, function (err, result) {
-            if (err)  throw err;
-            req.session.signId = result.insertId;
-            atc.updateLastSign(result.insertId, req.session.ID);
-
-            delete user[0].password;
-            res.json({
-              "message":"ok",
-              "user":   user[0]
-            });
-          });
-        }
-      });
-
-    }
-  });
+  console.log(req.body);
+  //
+  // user.getOne(req.body.login, function (err, user) {
+  //   if(err || user === 'undefined' || !user || user === null || user.length === 0){
+  //     res.json({'message': "error"});
+  //   }else{
+  //
+  //     bcrypt.compare(req.body.password, user[0].password, function(err, isMatch) {
+  //       if (err)  throw err;
+  //
+  //       if (!isMatch) {
+  //         res.json({'message': "error"});
+  //       }else{
+  //         res.cookie('remember', 1, {maxAge: 24 * 60 * 60 * 1000});
+  //         req.session.authorized = true;
+  //         req.session.username   = user[0].username;
+  //         req.session.ID = user[0].ID;
+  //         req.session.userStatus = user[0].status;
+  //
+  //         var record = {
+  //           dateEntry: main.getDate(new Date(Date.now())),
+  //           id_user:   user[0].ID
+  //         };
+  //
+  //         atc.recordUserEntry(record, function (err, result) {
+  //           if (err)  throw err;
+  //           req.session.signId = result.insertId;
+  //           atc.updateLastSign(result.insertId, req.session.ID);
+  //
+  //           delete user[0].password;
+  //           res.json({
+  //             "message":"ok",
+  //             "user":   user[0]
+  //           });
+  //         });
+  //       }
+  //     });
+  //
+  //   }
+  // });
 });
 
 router.get('/getAtcContent', function (req, res) {
