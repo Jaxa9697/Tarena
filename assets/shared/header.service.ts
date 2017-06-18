@@ -23,6 +23,13 @@ export class HeaderService {
       });
   }
 
+  getUserInfo(){
+    return this.http.get('/getUserInfo')
+      .map((data: Response )=> {
+        return data.json();
+      });
+  }
+
   getWOContent(query){
     return this.http.get(query)
       .map((data: Response )=> {

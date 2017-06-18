@@ -4,14 +4,17 @@
   <meta charset="UTF-8">
   <title>Tarena Application</title>
   <link rel="stylesheet" href="stylesheets/style-login.css">
+  <link rel="icon" href="/images/icon.png" type="image/png">
+
 </head>
 
 <body>
 <div class="wrapper">
   <div class="container">
     <h1>Добро пожаловать</h1>
+    <h5 style="color: #ffeb3b;">{{error}}</h5>
 
-    <form class="form" action="signIn" method="post" autocomplete="off">
+    <form class="form" action="login" method="post" autocomplete="off">
       <input autocomplete="new-username" name="username" type="text" placeholder="Логин">
       <input autocomplete="new-password" name="password" type="password" placeholder="Пароль">
       <label style="display: block; margin-bottom: 10px;">
