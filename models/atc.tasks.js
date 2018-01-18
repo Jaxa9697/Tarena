@@ -177,9 +177,10 @@ module.exports = function (connection){
     },
 
     getClientsByVlan: function (id, callback) {
-      connection.query("SELECT `tr_clients`.`name_cl`, `tr_clients`.`telephone`, `tr_atc`.`ip_address` AS `ipAddress` " +
-        "FROM `tr_atc`,`tr_clients` WHERE (`tr_clients`.`ID` =`tr_atc`.`id_client`) AND `tr_atc`.`status`='1' " +
-        "AND (`tr_atc`.`id_vlan` = ?) ", id, callback);
+      connection.query("SELECT  `tr_clients`.`name_cl`, `tr_clients`.`telephone`,CONCAT_WS(' ',`tr_atc`.`ip_address`, " +
+      "`tr_wifi_optics`.`ip_address`) AS `ipAddress` FROM `tr_clients` LEFT JOIN `tr_atc` ON `tr_clients`.`ID` = " +
+      "`tr_atc`.`id_client` LEFT JOIN `tr_wifi_optics` ON `tr_clients`.`ID` = `tr_wifi_optics`.`id_client` WHERE " +
+      "(`tr_atc`.`id_vlan` = ? OR `tr_wifi_optics`.`id_vlan` = ?)", id, callback);
     },
 
     getReport: function (callback) {

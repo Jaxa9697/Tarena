@@ -28,8 +28,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(cookieSession({
   name: 'session',
-  keys: ['Jaxa9696', '16031997'],
-  maxAge: 24 * 60 * 60 * 1000
+  keys: ['Tarena', '230588'],
+  maxAge: 30 * 60 * 1000
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 

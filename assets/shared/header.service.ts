@@ -143,7 +143,7 @@ export class HeaderService {
         return data.json();
       }).map((data)=>{
 
-          let quantity = 255 - Number(vlan.subnetMask.split(".")[3]);
+          let quantity = 253 - Number(vlan.subnetMask.split(".")[3]);
           let gatewayArray = vlan.gateway.split(".");
 
           let idNode = Number(gatewayArray[3]);

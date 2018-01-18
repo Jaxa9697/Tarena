@@ -89,11 +89,12 @@ router.post('/signUp', function (req, res) {
         p_vlan:   p.vlan,
         p_report: p.report,
         p_wifi:   p.wifi,
-        p_optics: p.optics
+        p_optics: p.optics,
+        last_sign: 0
       };
 
-      user.add(post, function (err) {
-        if (err) return next(err);
+      user.add(post, function (err3, next) {
+        if (err3) return next(err3);
 
         res.json({'message': "ok"});
       });
@@ -106,6 +107,7 @@ router.all('/login', function (req, res) {
   user.getOne(req.body.username, function (err, user) {
     if(err || user === 'undefined' || !user || user === null || user.length === 0){
       res.redirect('/login=error');
+
     }else{
 
       bcrypt.compare(req.body.password, user[0].password, function(err, isMatch) {

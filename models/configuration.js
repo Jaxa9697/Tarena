@@ -4,15 +4,10 @@
 var  mysql = require('mysql');
 
 var connection = mysql.createPool({
-    connectionLimit : 10,
-    host: 'sql9.freemysqlhosting.net',
-    user: 'sql9180311',
-    password: 'cRKXTTzIdG',
-    database: 'sql9180311',
-    // host: 'localhost',
-    // user: 'root',
-    // password: '',
-    // database: 'tarena',
+    host: 'localhost',
+    user: 'user',
+    password: '2230588@New',
+    database: 'new1001',
     multipleStatements: true
 });
 
