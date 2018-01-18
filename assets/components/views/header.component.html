@@ -36,12 +36,6 @@
           </div>
           <nav class="nav-primary">
             <ul class="nav2">
-              <!--<li><a class="toogle" (click)="createComponentDynamically(profCmp);">Профил</a></li>-->
-              <!--<li>-->
-                <!--<a class="toogle" (click)="createComponentDynamically(mainCmp);">-->
-                    <!--<span>Главная</span>-->
-                <!--</a>-->
-              <!--</li>-->
               <li>
                 <a *ngIf="user.pAtc.read" class="toogle" (click)="createComponentDynamically(atcCmp);">
                   <figure>
@@ -53,7 +47,7 @@
               <li>
                 <a *ngIf="user.pVlan.read" class="toogle" (click)="createComponentDynamically(vlanCmp);">
                   <figure>
-                    <img src="images/vlan.png" class="svg-icon">
+                    <img src="images/vlan2.png" class="svg-icon">
                   </figure>
                   <span>VLAN</span>
                 </a>
